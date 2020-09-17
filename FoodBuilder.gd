@@ -3,6 +3,7 @@ extends Node2D
 class_name Food
 
 var _name : String = 'wings'
+var sprite_size : int
 signal chosen (_name)
 
 func take_polygon(name):
@@ -22,6 +23,8 @@ func listen_choose():
 
 func _ready():
 	take_polygon(self._name)
+	sprite_size = $Sprite.texture.get_width()
+	print(sprite_size)
 	listen_choose()
 	
 func _process(delta):
@@ -31,5 +34,5 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch \
 	and event.is_pressed():
 		print('tapped')
-		emit_signal("chosen", self._name)
+		hide()
 
