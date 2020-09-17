@@ -1,13 +1,14 @@
 extends Control
 
-var level
-var products
+var level : int
+var products : Array
 signal correct_choose (true_or_false)
 
 func products_list(level):
 	#Генерирует список продуктов
-	return
-	
+	products = ['wings']
+	return 
+
 func correct_choose(product, list):
 	if product in list:
 		return true

@@ -1,10 +1,12 @@
-extends Spatial
+extends Node2D
 
-var _name
+class_name Food
+
+var _name : String = 'wings'
 signal chosen (_name)
 
 func take_polygon(name):
-	#По имени полигона выбирает полигон из библиотеки
+	$Sprite.texture = load("res://assets/Foods/" + _name + '.png')
 	return
 	
 func process_choose(chosen_right):
@@ -19,8 +21,15 @@ func listen_choose():
 	return
 
 func _ready():
-	take_polygon(_name)
+	take_polygon(self._name)
 	listen_choose()
 	
 func _process(delta):
 	process_choose(true)
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if event is InputEventScreenTouch \
+	and event.is_pressed():
+		print('tapped')
+		emit_signal("chosen", self._name)
+
