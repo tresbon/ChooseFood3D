@@ -33,16 +33,20 @@ func render(foods : Array):
 	#Рендерит еду из foods
 	#Перемешать еду
 	var food_row
-	foods.shuffle()
 	for i in range(4):
-		food_row = foods.slice(i*4,(i+1)*4)
+		food_row = foods.slice(i*4,i*4+3,1)
 		for f in food_row:
+			print(food_row)
 			var food = load("res://FoodBuilder.tscn").instance()
-			food._name = foods[i]
-			food.position.x += i * food.sprite_size
+			food._name = f
+			food.take_polygon(food._name)
 			add_child(food)
+			food.position += Vector2(food_row.find(f) * \
+			food.sprite_size().x,
+			i * food.sprite_size().y)
 	return
 	
 func _ready():
+	foods.shuffle()
 	render(foods)
 
