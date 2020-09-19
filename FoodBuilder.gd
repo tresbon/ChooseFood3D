@@ -31,7 +31,5 @@ func _ready():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch \
 	and event.is_pressed():
-		print('tapped')
-		print(_name)
-		hide()
+		emit_signal("chosen", _name)
 

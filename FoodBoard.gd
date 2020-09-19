@@ -29,14 +29,24 @@ var foods : Array = [
 	'soup'
 ]
 
+var food_to_choose : Array
+
+func correct_choose(product, list):
+	if product in list:
+		return true
+	else:
+		return false
+		
+signal correct_choose (true_or_false)
+
 func render(foods : Array):
 	#Рендерит еду из foods
 	#Перемешать еду
+	foods.shuffle()
 	var food_row
 	for i in range(4):
 		food_row = foods.slice(i*4,i*4+3,1)
 		for f in food_row:
-			print(food_row)
 			var food = load("res://FoodBuilder.tscn").instance()
 			food._name = f
 			food.take_polygon(food._name)
@@ -44,9 +54,13 @@ func render(foods : Array):
 			food.position += Vector2(food_row.find(f) * \
 			food.sprite_size().x,
 			i * food.sprite_size().y)
-	return
+	return foods.slice(0,16)
 	
 func _ready():
-	foods.shuffle()
-	render(foods)
+	var rendered_foods = render(foods)
+	rendered_foods.shuffle()
+	food_to_choose = rendered_foods.slice(0,3)
+	for ftc in food_to_choose:
+		$ProductList/ItemList.add_item(ftc)
+	
 
