@@ -33,11 +33,9 @@ var food_to_choose : Array
 
 func correct_choose(product, list):
 	if product in list:
-		return true
+		Global.emit_signal('correct_choose', true) 
 	else:
-		return false
-		
-signal correct_choose (true_or_false)
+		Global.emit_signal('correct_choose', false)
 
 func render(foods : Array):
 	#Рендерит еду из foods
@@ -58,6 +56,8 @@ func render(foods : Array):
 	
 func _ready():
 	var rendered_foods = render(foods)
+	self.connect('_on_Global_chosen',
+		Global,correct_choose(1,rendered_foods))
 	rendered_foods.shuffle()
 	food_to_choose = rendered_foods.slice(0,3)
 	for ftc in food_to_choose:

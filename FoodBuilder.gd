@@ -3,7 +3,6 @@ extends Node2D
 class_name Food
 
 var _name : String = 'wings'
-signal chosen (_name)
 
 func take_polygon(name):
 	$Sprite.texture = load("res://assets/Foods/" + _name + '.png')
@@ -31,5 +30,5 @@ func _ready():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch \
 	and event.is_pressed():
-		emit_signal("chosen", _name)
+		Global.emit_signal("chosen", _name)
 

@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="ChooseFood 3D"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=750
