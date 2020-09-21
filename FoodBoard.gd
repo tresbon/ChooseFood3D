@@ -30,12 +30,17 @@ var foods : Array = [
 ]
 
 var food_to_choose : Array
+var rendered_foods : Array
 
-func correct_choose(product, list):
-	if product in list:
+func correct_choose(product):
+	print('chosen')
+	if product in rendered_foods:
 		Global.emit_signal('correct_choose', true) 
 	else:
 		Global.emit_signal('correct_choose', false)
+
+func print_hello():
+	print('hello')
 
 func render(foods : Array):
 	#Рендерит еду из foods
@@ -55,12 +60,10 @@ func render(foods : Array):
 	return foods.slice(0,16)
 	
 func _ready():
-	var rendered_foods = render(foods)
-	self.connect('_on_Global_chosen',
-		Global,correct_choose(1,rendered_foods))
+	rendered_foods = render(foods)
 	rendered_foods.shuffle()
-	food_to_choose = rendered_foods.slice(0,3)
-	for ftc in food_to_choose:
+	Global.food_to_choose = rendered_foods.slice(0,3)
+	for ftc in Global.food_to_choose:
 		$ProductList/ItemList.add_item(ftc)
 	
 
