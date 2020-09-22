@@ -4,5 +4,3 @@
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
-[connection signal="chosen" from="." to="." method="_on_Global_chosen"]
-[connection signal="correct_choose" from="." to="." method="_on_Global_correct_choose"]

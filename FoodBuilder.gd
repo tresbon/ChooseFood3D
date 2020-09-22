@@ -1,10 +1,10 @@
 extends Node2D
 
-var _name : String = 'wings'
+var _name : String 
 
 func take_polygon(name):
-	$Sprite.texture = load("res://assets/Foods/" + _name + '.png')
-	return
+	$Sprite.texture = load("res://assets/Foods/" + name + '.png')
+	print('Texture is ' + name)
 	
 func print_hello():
 	print('hello from food')
@@ -18,7 +18,7 @@ func _ready():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch \
 	and event.is_pressed():
-		if Global.listen(_name):
-			hide()
+		if _name in Global.food_to_choose:
+			take_polygon(Global.new_food(_name))
 		print(_name)
 
