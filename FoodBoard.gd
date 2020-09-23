@@ -1,10 +1,6 @@
 extends Node2D
 
-var food_to_choose : Array
 var rendered_foods : Array
-
-func print_hello():
-	print('hello')
 
 func render(foods : Array):
 	#Рендерит еду из foods

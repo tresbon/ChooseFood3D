@@ -15,8 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ChooseFood 3D"
-config/icon="res://icon.png"
+config/name="Choose Food for Delivery Service"
+run/main_scene="res://Main.tscn"
+config/icon="res://assets/Foods/burger.png"
 
 [autoload]
 
@@ -40,4 +41,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

@@ -3,7 +3,7 @@ extends Node
 var food_to_choose : Array = []
 var rendered_foods : Array = []
 var screen_size
-var score
+var score = 0
 var foods : Array = [
 	'popcorn',
 	'coffee',
@@ -32,9 +32,9 @@ var foods : Array = [
 	'fish',
 	'soup'
 ]
+signal food_to_choose_empty
 
 func new_food(_name):
-	var new_foods : Array = []
 	food_to_choose.remove(
 		food_to_choose.find(_name)
 	)
