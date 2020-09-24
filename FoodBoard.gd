@@ -1,6 +1,7 @@
 extends Node2D
 
 var rendered_foods : Array
+var my_foods : Array
 
 func render(foods : Array):
 	#Рендерит еду из foods
@@ -14,6 +15,7 @@ func render(foods : Array):
 			var food = load("res://FoodBuilder.tscn").instance()
 			food._name = f
 			food.take_polygon(food._name)
+			my_foods.append(food)
 			add_child(food)
 			food.position += Vector2(food_row.find(f) * \
 			200 + food.sprite_size().x,
