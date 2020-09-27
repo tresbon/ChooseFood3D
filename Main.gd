@@ -15,7 +15,6 @@ func food_to_choose_empty():
 	next_level()
 	level += 1
 	$FoodBoard/ProductList/ItemList.clear()
-	print(Global.food_to_choose)
 	for f in Global.food_to_choose:
 		$FoodBoard/ProductList/ItemList.add_item(f)
 	

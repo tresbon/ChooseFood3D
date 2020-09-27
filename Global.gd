@@ -49,14 +49,20 @@ func new_food(_name):
 	food_to_choose.remove(
 		food_to_choose.find(_name)
 	)
+	var not_rendered_food
 	if not food_to_choose:
 		print('empty')
 		food_to_choose = rendered_foods.slice(0,3)
-		print(food_to_choose)
 		emit_signal("food_to_choose_empty")
+	not_rendered_food = choose_not_rendered_food()
+	rendered_foods.remove(
+		rendered_foods.find(_name)
+	)
+	return not_rendered_food
+
+func choose_not_rendered_food():
 	for f in foods:
 		if f in rendered_foods:
 			continue
 		else:
-			rendered_foods.append(f)
 			return f
