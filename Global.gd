@@ -39,28 +39,28 @@ func emit_coorect_choose(_name):
 		print(_name)
 		emit_signal("correct_choose")
 
-func delete_chosen_food(_name):
+func remove_food_from_rendered(_name):
 	rendered_foods.remove(
 		rendered_foods.find(_name)
 	)
 
-func new_food(_name):
+func remove_food_to_choose(_name):
 	#Удалить выбранное
 	food_to_choose.remove(
 		food_to_choose.find(_name)
 	)
-	var not_rendered_food
+
+func check_food_to_choose_empty():
 	if not food_to_choose:
 		print('empty')
+		randomize()
+		rendered_foods.shuffle()
 		food_to_choose = rendered_foods.slice(0,3)
 		emit_signal("food_to_choose_empty")
-	not_rendered_food = choose_not_rendered_food()
-	rendered_foods.remove(
-		rendered_foods.find(_name)
-	)
-	return not_rendered_food
 
 func choose_not_rendered_food():
+	randomize()
+	foods.shuffle()
 	for f in foods:
 		if f in rendered_foods:
 			continue

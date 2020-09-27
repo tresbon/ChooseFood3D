@@ -1,6 +1,6 @@
 extends Node2D
 
-var _name : String 
+var _name
 
 func take_polygon(name):
 	$Sprite.texture = load("res://assets/Foods/" + str(name) + '.png')
@@ -21,9 +21,14 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 				Color(1, 1, 1, 1), Color(0.56, 0.82, 0.56, 1), .2,
 				Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			$ColorTween.start()
-			_name = Global.new_food(_name)
-			print(_name)
+			var new_name = Global.choose_not_rendered_food()
+			Global.remove_food_from_rendered(_name)
+			Global.remove_food_to_choose(_name)
+			Global.check_food_to_choose_empty()
+			print(Global.rendered_foods, '\n', Global.food_to_choose)
+			_name = new_name
 			take_polygon(_name)
+			Global.rendered_foods.append(_name)
 		else:
 			$ColorTween.interpolate_property(
 				$Sprite, "modulate",

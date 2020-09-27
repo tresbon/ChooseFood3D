@@ -24,10 +24,14 @@ func restart():
 		f.take_polygon(Global.rendered_foods[
 			$FoodBoard.my_foods.find(f)
 		])
+	randomize()
+	Global.rendered_foods.shuffle()
 	Global.food_to_choose = Global.rendered_foods.slice(0,3)
 	$FoodBoard/ProductList/ItemList.clear()
 	for f in Global.food_to_choose:
 		$FoodBoard/ProductList/ItemList.add_item(f)
+	$HUD/MarginContainer/TimeLabel.text = '30'
+	$HUD/GameOver.hide()
 	
 func game_over():
 	$HUD/GameOver/Panel/GOScoreLable.text =\
@@ -52,3 +56,6 @@ func _on_Timer_timeout():
 func _on_Global_correct_choose():
 	score += 1
 	$HUD/MarginContainer/ScoreLabel.text = str(score)
+
+		
+		

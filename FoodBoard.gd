@@ -6,6 +6,7 @@ var my_foods : Array
 func render(foods : Array):
 	#Рендерит еду из foods
 	#Перемешать еду
+	randomize()
 	foods.shuffle()
 	var food_row
 	for i in range(4):
@@ -24,6 +25,7 @@ func render(foods : Array):
 	
 func _ready():
 	rendered_foods = render(Global.foods)
+	randomize()
 	rendered_foods.shuffle()
 	Global.food_to_choose = rendered_foods.slice(0,3)
 	for ftc in Global.food_to_choose:
