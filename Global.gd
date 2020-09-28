@@ -34,6 +34,16 @@ var foods : Array = [
 signal food_to_choose_empty
 signal correct_choose
 
+func get_foods_to_render():
+	randomize()
+	foods.shuffle()
+	rendered_foods = foods.slice(0,15)
+	
+func get_foods_to_choose():
+	randomize()
+	rendered_foods.shuffle()
+	food_to_choose = rendered_foods.slice(0,3)
+
 func emit_coorect_choose(_name):
 	if _name in food_to_choose:
 		print(_name)
