@@ -42,4 +42,9 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+vram_compression/import_bptc=true
+vram_compression/import_etc=true
+vram_compression/import_pvrtc=true
+gles2/compatibility/disable_half_float=true
+gles2/compatibility/enable_high_float.Android=true
 environment/default_environment="res://default_env.tres"
