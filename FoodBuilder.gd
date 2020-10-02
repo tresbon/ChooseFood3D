@@ -3,7 +3,7 @@ extends Node2D
 var _name
 
 func take_polygon(name):
-	$Sprite.texture = load("res://assets/Foods/" + str(name) + '.png')
+	$Sprite.texture = load("res://assets/assets/Foods/" + str(name) + '.png')
 	
 func sprite_size():
 	return $Sprite.texture.get_width() * $Sprite.scale
