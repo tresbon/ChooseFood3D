@@ -4,8 +4,6 @@ var rendered_foods : Array
 var rendered_foods_scenes : Array
 
 func render():
-	#Рендерит еду из foods
-	#Перемешать еду
 	Global.get_foods_to_render()
 	rendered_foods = Global.rendered_foods
 	var food_row
@@ -19,10 +17,9 @@ func render():
 			200 + food.sprite_size().x,
 			1000 + i * food.sprite_size().y)
 			rendered_foods_scenes.append(food)
-			add_child(food)
+			$CanvasLayer.add_child(food)
 	
-func _ready():
-	render()
+func get_foods():
 	Global.get_foods_to_choose()
 	for ftc in Global.food_to_choose:
 		$ProductList/ItemList.add_item(ftc)

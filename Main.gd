@@ -10,6 +10,8 @@ func _ready():
 	Global.connect('correct_choose', self, '_on_Global_correct_choose')
 	Global.connect('food_to_choose_empty', self, 'food_to_choose_empty')
 	$HUD.connect('restart', self, 'restart')
+	$FoodBoard.render()
+	$FoodBoard.get_foods()
 
 func food_to_choose_empty():
 	next_level()
