@@ -8,6 +8,7 @@ func _ready():
 	$HUD/MarginContainer/ScoreLabel.text = str(score)
 	$HUD/MarginContainer/TimeLabel.text = '30'
 	Global.connect('correct_choose', self, '_on_Global_correct_choose')
+	Global.connect('food_to_choose_updated', self, '_on_Global_food_to_choose_updated')
 	Global.connect('food_to_choose_empty', self, 'food_to_choose_empty')
 	$HUD.connect('restart', self, 'restart')
 	$FoodBoard.render()
@@ -55,8 +56,12 @@ func _on_Timer_timeout():
 		game_over()
 
 func _on_Global_correct_choose():
+	score += 1
+	$HUD/MarginContainer/ScoreLabel.text = str(score)
+
+func _on_Global_food_to_choose_updated():
+	print('updated')
 	$FoodBoard/ProductList/ItemList.clear()
 	for f in Global.food_to_choose:
 		$FoodBoard/ProductList/ItemList.add_item(f)
-	score += 1
-	$HUD/MarginContainer/ScoreLabel.text = str(score)
+	

@@ -32,16 +32,17 @@ var foods : Array = [
 	'soup'
 ]
 signal food_to_choose_empty
+signal food_to_choose_updated
 signal correct_choose
 
 func get_foods_to_render():
-	#randomize()
-	#foods.shuffle()
+	randomize()
+	foods.shuffle()
 	rendered_foods = foods.slice(0,15)
 	
 func get_foods_to_choose():
-	#randomize()
-	#rendered_foods.shuffle()
+	randomize()
+	rendered_foods.shuffle()
 	food_to_choose = rendered_foods.slice(0,3)
 
 func emit_coorect_choose(_name):
@@ -59,6 +60,7 @@ func remove_food_to_choose(_name):
 	food_to_choose.remove(
 		food_to_choose.find(_name)
 	)
+	emit_signal("food_to_choose_updated")
 
 func check_food_to_choose_empty():
 	if not food_to_choose:

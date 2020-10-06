@@ -17,4 +17,5 @@ script = ExtResource( 4 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 [connection signal="correct_choose" from="Global" to="." method="_on_Global_correct_choose"]
+[connection signal="food_to_choose_updated" from="Global" to="." method="_on_Global_food_to_choose_updated"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
