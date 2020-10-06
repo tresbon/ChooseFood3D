@@ -10,7 +10,7 @@ func render():
 	for i in range(4):
 		food_row = rendered_foods.slice(i*4,i*4+3,1)
 		for f in food_row:
-			var food = load("res://assets/FoodBuilder.tscn").instance()
+			var food = load("res://FoodBuilder.tscn").instance()
 			food._name = f
 			food.take_polygon(food._name)
 			food.position += Vector2(food_row.find(f) * \

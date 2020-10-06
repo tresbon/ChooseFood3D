@@ -3,7 +3,8 @@ extends Node2D
 var _name
 
 func take_polygon(name):
-	$Sprite.texture = load("res://assets/assets/Foods/" + str(name) + '.png')
+	$Sprite.texture = load("res://assets/Foods/" + name + '.png')
+	_name = name
 	
 func sprite_size():
 	return $Sprite.texture.get_width() * $Sprite.scale
@@ -14,6 +15,7 @@ func _ready():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch \
 	and event.is_pressed():
+		print(_name)
 		if _name in Global.food_to_choose:
 			Global.emit_coorect_choose(_name)
 			$ColorTween.interpolate_property(

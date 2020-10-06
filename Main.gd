@@ -24,10 +24,9 @@ func restart():
 	Global.get_foods_to_render()
 	$FoodBoard.rendered_foods = Global.rendered_foods
 	for f in $FoodBoard.rendered_foods_scenes:
-		f.take_polygon(Global.rendered_foods[
+		f.take_polygon($FoodBoard.rendered_foods[
 			$FoodBoard.rendered_foods_scenes.find(f)
 		])
-	randomize()
 	Global.get_foods_to_choose()
 	$FoodBoard/ProductList/ItemList.clear()
 	for f in Global.food_to_choose:
@@ -56,5 +55,8 @@ func _on_Timer_timeout():
 		game_over()
 
 func _on_Global_correct_choose():
+	$FoodBoard/ProductList/ItemList.clear()
+	for f in Global.food_to_choose:
+		$FoodBoard/ProductList/ItemList.add_item(f)
 	score += 1
 	$HUD/MarginContainer/ScoreLabel.text = str(score)
