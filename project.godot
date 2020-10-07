@@ -51,4 +51,5 @@ vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
 gles2/compatibility/disable_half_float=true
 gles2/compatibility/enable_high_float.Android=true
+environment/default_clear_color=Color( 0.568627, 0.819608, 0.545098, 1 )
 environment/default_environment="res://default_env.tres"

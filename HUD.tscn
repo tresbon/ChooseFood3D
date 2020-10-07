@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -11,25 +11,29 @@ font_data = ExtResource( 1 )
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://assets/Kenney Bold.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-outline_color = Color( 0.984314, 0.92549, 0.92549, 1 )
-font_data = SubResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.266667, 0, 0.278431, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 outline_color = Color( 0.984314, 0.92549, 0.92549, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 6 )
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/Kenney Bold.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+outline_color = Color( 0.984314, 0.92549, 0.92549, 1 )
+font_data = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.266667, 0, 0.278431, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+outline_color = Color( 0.984314, 0.92549, 0.92549, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
 BoxContainer/constants/separation = 8
 Button/colors/font_color = Color( 0.984314, 0.92549, 0.92549, 1 )
 Button/colors/font_color_disabled = Color( 0.984314, 0.92549, 0.92549, 1 )
@@ -38,11 +42,11 @@ Button/colors/font_color_pressed = Color( 0.984314, 0.92549, 0.92549, 1 )
 Button/colors/icon_color_hover = Color( 0.984314, 0.92549, 0.92549, 1 )
 Button/colors/icon_color_pressed = Color( 0.984314, 0.92549, 0.92549, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 4 )
+Button/fonts/font = SubResource( 5 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
-Button/styles/normal = SubResource( 5 )
+Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = null
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -1214,7 +1218,7 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 size = 15
 outline_color = Color( 0.984314, 0.92549, 0.92549, 1 )
 font_data = ExtResource( 1 )
@@ -1256,11 +1260,15 @@ margin_right = 786.0
 margin_bottom = 1382.0
 
 [node name="GOLabel" type="Label" parent="GameOver"]
+anchor_top = -0.00144718
+anchor_bottom = -0.00144718
 margin_left = 130.0
-margin_top = 300.0
+margin_top = 402.0
 margin_right = 630.0
-margin_bottom = 400.0
-custom_fonts/font = SubResource( 9 )
+margin_bottom = 502.0
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.984314, 0.92549, 0.92549, 1 )
 text = "Game Over"
 align = 1
 valign = 1
@@ -1279,7 +1287,10 @@ margin_left = 130.0
 margin_top = 600.0
 margin_right = 630.0
 margin_bottom = 700.0
-theme = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+theme = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="GameOver/GOButton" to="." method="_on_GOButton_pressed"]
