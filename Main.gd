@@ -60,7 +60,6 @@ func _on_Global_correct_choose():
 	$HUD/MarginContainer/ScoreLabel.text = str(score)
 
 func _on_Global_food_to_choose_updated():
-	print('updated')
 	$FoodBoard/ProductList/ItemList.clear()
 	for f in Global.food_to_choose:
 		$FoodBoard/ProductList/ItemList.add_item(f)
